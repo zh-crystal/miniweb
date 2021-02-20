@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--<html lang="en">-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<!--    移动端兼容-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html基础</title>
+</head>
+<body>
+    <h1>欢迎来到我的主页</h1>
+    <h2>基本标签</h2>
+    <p>段落</p>
+    换<br />
+    行<br />
+    <p>空&nbsp;&nbsp;格</p>
+    <p>&lt;&gt;</p>
+    <img src="images/person.png" alt="吴亦凡" />
+    <img src="images/003-02.gif" alt="gif" />
+<!--    flash-->
+<!--    <embed src="images/007.swf" />-->
+    <h2>列表</h2>
+    <div>
+        <ol>
+            <li>first</li>
+            <li>second</li>
+            <li>third</li>
+        </ol>
+        <ul>
+            <li><a href="#">新闻标题一</a></li>
+            <li><a href="#">新闻标题二</a></li>
+            <li><a href="#">新闻标题三</a></li>
+        </ul>
+        <dl>
+            <dt>html</dt>
+            <dd>负责页面的结构</dd>
+            <dt>css</dt>
+            <dd>负责页面的表现</dd>
+            <dt>javascript</dt>
+            <dd>负责页面的行为</dd>
+        </dl>
+    </div>
+    <h2>表单</h2>
+    <form action="#" method="get">
+        <p>
+            <label>姓名：</label><input type="text" name="username" />
+        </p>
+        <p>
+            <label>密码：</label><input type="password" name="password" />
+        </p>
+        <p>
+            <label>性别：</label>
+            <input type="radio" name="gender" value="0" /> 男
+            <input type="radio" name="gender" value="1" /> 女
+        </p>
+        <p>
+            <label>爱好：</label>
+            <input type="checkbox" name="like" value="sing" /> 唱歌
+            <input type="checkbox" name="like" value="run" /> 跑步
+            <input type="checkbox" name="like" value="swiming" /> 游泳
+        </p>
+        <p>
+            <label>照片：</label>
+            <input type="file" name="person_pic">
+        </p>
+        <p>
+            <label>个人描述：</label>
+            <textarea name="about"></textarea>
+        </p>
+        <p>
+            <label>籍贯：</label>
+            <select name="site">
+                <option value="0">北京</option>
+                <option value="1">上海</option>
+                <option value="2">广州</option>
+                <option value="3">深圳</option>
+            </select>
+        </p>
+        <p>
+            <input type="submit" name="" value="提交">
+            <!-- input类型为submit定义提交按钮
+                 还可以用图片控件代替submit按钮提交，一般会导致提交两次，不建议使用。如：
+                 <input type="image" src="xxx.gif">
+            -->
+            <input type="reset" name="" value="重置">
+        </p>
+    </form>
+    <h2>表格</h2>
+    <table border="1px" width="600px" height="300px">
+        <tr>
+            <th colspan="5" align="left">基本情况</th>
+        </tr>
+        <tr align="left">
+            <td width="15%">姓名</td>
+            <td width="25%"></td>
+            <td width="15%">性别</td>
+            <td width="25%"></td>
+            <td rowspan="5" width="20%">
+                <img src="images/person.png" alt="吴亦凡" />
+            </td>
+        </tr>
+        <tr>
+            <td>民族</td>
+            <td></td>
+            <td>出生日期</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>政治面貌</td>
+            <td></td>
+            <td>健康情况</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>籍贯</td>
+            <td></td>
+            <td>学历</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>电子信箱</td>
+            <td></td>
+            <td>联系电话</td>
+            <td></td>
+        </tr>
+    </table>
+    <h2>链接</h2>
+    <ul>
+        <li><a href="#">返回顶部</a></li>
+        <li><a href="https://www.baidu.com" title="百度一下">百度</a></li>
+        <li>
+            <a href="./itcast.html" title="传智播客" target="_blank">
+            <img src="images/logo.png" alt="logo" />
+            </a>
+        </li>
+        <li><a href="resume.html" title="简历" target="_blank">简历布局</a></li>
+    </ul>
+    <h2>HTML5新增标签</h2>
+    <label>网址:</label><input type="url" name="" required><br><br>
+    <label>邮箱:</label><input type="email" name="" required><br><br>
+    <label>日期:</label><input type="date" name=""><br><br>
+    <label>时间:</label><input type="time" name=""><br><br>
+    <label>星期:</label><input type="week" name=""><br><br>
+    <label>数量:</label><input type="number" name=""> <br><br>
+    <label>范围:</label><input type="range" name=""><br><br>
+    <label>电话:</label><input type="tel" name=""><br><br>
+    <label>颜色:</label><input type="color" name=""><br><br>
+    <label>搜索:</label><input type="search" name=""><br><br>
+    <h2>retina适配</h2>
+    <img src="images/pic1x.jpg" alt="1倍图">
+<!--    2倍图强制缩小，适配retina屏-->
+    <img src="images/pic2x.jpg" alt="2倍图" style="width: 300px;height: 215px">
+</body>
+</html>

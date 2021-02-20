@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>bootstrap文档</title>
+    <!--    首先引入jquery，bootstrap基于jquery-->
+    <script src="js/jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        div[class*='col-'] {
+            /*background-color: gold;*/
+            /*border: 1px solid #ddd;*/
+        }
+
+        .box {
+            height: 200px;
+            /*width: 240px;*/
+            max-width: 240px;
+            background-color: cyan;
+            border: 1px solid #ddd;
+            margin: 20px auto;
+            font: bold 40px/200px "Microsoft YaHei UI";
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $('#btn-js-modal').click(function () {
+                // $('#modal04').modal('show'); // 默认点击背景隐藏弹框
+                $('#modal04').modal({
+                    show: true,
+                    backdrop: 'static' // 点击背景无法取消
+                });
+            });
+            $('#confirm').click(function () {
+                $('#modal04').modal('hide');
+            });
+            $('#cancel').click(function () {
+                $('#modal04').modal('hide');
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+<!--    row使用负margain平衡container的左右padding-->
+    <div class="row">
+        <h2>API文档：https://v3.bootcss.com/css</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>栅格系统</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="box">1</div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="box">2</div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="box">3</div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="box">4</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>栅格偏移</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-1">
+            <div class="box">1</div>
+        </div>
+        <div class="col-lg-5">
+            <div class="box">2</div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-1">
+            <div class="box">1</div>
+        </div>
+        <div class="col-lg-4 col-lg-offset-2">
+            <div class="box">2</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>栅格隐藏</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="box">1</div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="box">2</div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="box">3</div>
+        </div>
+        <div class="col-lg-3 col-md-4 hidden-md col-sm-6 hidden-xs">
+            <div class="box">4</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>按钮</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <a class="btn btn-default" href="#">btn-default</a>
+        <a class="btn btn-primary" href="#">btn-primary</a>
+        <a class="btn btn-info" href="#">btn-info</a>
+        <a class="btn btn-warning" href="#">btn-warning</a>
+        <a class="btn btn-danger" href="#">btn-danger</a>
+        <a class="btn btn-link" href="#">btn-link</a>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <a class="btn btn-primary btn-lg" href="#">btn-lg</a>
+        <a class="btn btn-primary btn-md" href="#">btn-md</a>
+        <a class="btn btn-primary btn-xs" href="#">btn-xs</a>
+        <a class="btn btn-primary" href="#">btn-primary</a>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <a class="btn btn-primary btn-block" href="#">btn-block</a>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <a class="btn btn-primary" href="#">btn-primary</a>
+        <a class="btn btn-primary active" href="#">active</a>
+        <a class="btn btn-primary disabled" href="#">disabled</a>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="btn-group">
+            <a class="btn btn-primary" href="#">1</a>
+            <a class="btn" href="#">2</a>
+            <a class="btn" href="#">3</a>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-primary" href="#">1</a>
+            <a class="btn" href="#">2</a>
+            <a class="btn" href="#">3</a>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <input class="btn btn-primary" name="" type="button" value="1">
+            </div>
+            <div class="btn-group">
+                <input class="btn" name="" type="button" value="2">
+            </div>
+            <div class="btn-group">
+                <input class="btn" name="" type="button" value="3">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>表单</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input class="form-control" id="username" placeholder="张xx" type="text">
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input class="form-control" id="password" placeholder="******" type="password">
+            </div>
+        </form>
+    </div>
+    <br/>
+    <br/>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="username02">用户名</label>
+            <input class="form-control" id="username02" placeholder="张xx" type="text">
+        </div>
+        <div class="form-group">
+            <label for="password02">密码</label>
+            <input class="form-control" id="password02" placeholder="******" type="password">
+        </div>
+    </form>
+    <br/>
+    <br/>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-xs-2" for="username03">用户名</label>
+            <div class="col-xs-10"><input class="form-control" id="username03" placeholder="张xx" type="text"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2" for="password03">密码</label>
+            <div class="col-xs-10"><input class="form-control" id="password03" placeholder="******" type="password">
+            </div>
+        </div>
+    </form>
+    <br/>
+    <br/>
+    <form class="form-horizontal">
+        <div class="form-group-lg">
+            <label class="col-xs-2" for="username04">用户名</label>
+            <div class="col-xs-10"><input class="form-control" id="username04" placeholder="张xx" type="text"></div>
+        </div>
+        <div class="form-group-xs">
+            <label class="col-xs-2" for="password04">密码</label>
+            <div class="col-xs-10"><input class="form-control" id="password04" placeholder="******" type="password">
+            </div>
+        </div>
+    </form>
+    <br/>
+    <br/>
+    <form>
+        <div class="input-group">
+            <label for="email-host"></label><input class="form-control" type="text" id="email-host">
+            <span class="input-group-addon">@</span>
+        </div>
+    </form>
+    <br/>
+    <br/>
+    <form>
+        <div class="input-group">
+            <label for="search"></label><input class="form-control" type="text" id="search">
+            <span class="input-group-btn">
+                    <button class="btn btn-primary">搜索</button>
+                </span>
+        </div>
+    </form>
+    <br/>
+    <br/>
+    <form>
+        <div class="input-group">
+            <label for="search02"></label><input class="form-control" type="text" id="search02">
+            <span class="input-group-btn">
+                    <button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>导航条</h2>
+    </div>
+</div>
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <!--        logo-->
+        <div class="navbar-header">
+<!--            菜单折叠按钮-->
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#mymenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">LOGO</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mymenu">
+            <!--        菜单-->
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页</a></li>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">解决方案</a></li>
+            </ul>
+            <!--        菜单表单-->
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <div class="input-group">
+                        <label for="search03"></label><input class="form-control" type="text" id="search03">
+                        <span class="input-group-btn">
+                    <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>模态框</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modal01">弹出大模态框</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modal02">弹出模态框</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modal03">弹出小模态框</button>
+        <button class="btn btn-primary" id="btn-js-modal">js控制的弹框</button>
+    </div>
+</div>
+<div class="modal fade" id="modal01">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                大弹框
+            </div>
+            <div class="madal-body">
+                <p>文字内容</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">确定</button>
+                <button class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal02">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                普通弹框
+            </div>
+            <div class="madal-body">
+                <p>文字内容</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">确定</button>
+                <button class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal03">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                小弹框
+            </div>
+            <div class="madal-body">
+                <p>文字内容</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">确定</button>
+                <button class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal04">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                js控制弹框
+            </div>
+            <div class="madal-body">
+                <p>文字内容</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="confirm">确定</button>
+                <button class="btn btn-default" id="cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>路径导航</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">产品</a></li>
+            <li class="active">水果</li>
+        </ol>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>下拉菜单</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="dropdown">
+            <div class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                下拉菜单
+                <span class="caret"></span>
+            </div>
+            <ul class="dropdown-menu">
+                <li><a href="#">菜单一</a></li>
+                <li><a href="#">菜单二</a></li>
+                <li><a href="#">菜单三</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

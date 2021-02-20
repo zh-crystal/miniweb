@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>js动画</title>
+    <style type="text/css">
+        .div01{
+            padding: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #ff0;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+        .div02{
+            width: 1002px;
+            height: 202px;
+            margin: 350px auto 0;
+            position:relative;
+        }
+        .div02 span{
+            width: 18px;
+            height: 18px;
+            font: bold 15px/18px "Microsoft YaHei UI";
+            border: 1px solid yellow;
+            background-color: yellow;
+            cursor: pointer;
+            color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 90px;
+        }
+        #toleft{
+            left: 0;
+        }
+        #toright{
+            left: 982px;
+        }
+        .list01_wrap{
+            border: 1px solid black;
+            width: 960px;
+            height: 200px;
+            overflow: hidden;
+            position: absolute;
+            left: 20px;
+            top: 0;
+        }
+        .list01{
+            width: 1960px;
+            height: 200px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background-color: #ddd;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .list01 li{
+            float: left;
+            padding: 0;
+            width: 160px;
+            height: 160px;
+            margin: 20px 40px;
+            background-color: #f00;
+            font: bold 50px/160px "Microsoft YaHei UI";
+            text-align: center;
+            color: white;
+        }
+        .div03, .div04{
+            width: 400px;
+            height: 80px;
+            margin: 50px auto;
+            text-align: center;
+            font: normal 16px/80px "Microsoft YaHei UI";
+            color: blue;
+            background-color: #ddd;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var oDiv01 = document.getElementById('div01');
+            var left01 = 0, speed01 = 3;
+            var timer01 = setInterval(function () {
+                left01 += speed01;
+                if (left01>700) {
+                    speed01 = -3
+                    // clearInterval(timer01);
+                } else if (left01 < 0) {
+                    speed01 = 3;
+                }
+                oDiv01.style.left = left01 + 'px';
+            }, 30);
+            // clearInterval(timer01);
+
+            var oUl01 = document.getElementById('ul01');
+            oUl01.innerHTML += oUl01.innerHTML;
+            var left02 = 0, speed02 = -3, curSpeed = -3;
+            var timer02 = setInterval(function () {
+                left02 += speed02;
+                if (left02 < -960) {
+                    left02 = 0;
+                } else if (left02 > 0) {
+                    left02 = -960
+                }
+                oUl01.style.left = left02 + 'px';
+            }, 30);
+            var toleft = document.getElementById('toleft');
+            toleft.onclick = function () {
+                speed02 = 3
+            }
+            var toright = document.getElementById('toright');
+            toright.onclick = function () {
+                speed02 = -3
+            }
+            // clearInterval(timer02);
+            oUl01.onmouseover = function () {
+                curSpeed = speed02;
+                speed02 = 0;
+            }
+            oUl01.onmouseout = function () {
+                speed02 = curSpeed;
+            }
+
+            var oDiv03 = document.getElementById('div03');
+            var timer03 = setInterval(function () {
+                var now = new Date();
+                oDiv03.innerText = '当前时间是：' +
+                    now.getFullYear() + '年' +
+                    (parseInt(now.getMonth()) + 1) + '月' + // 月份0~11
+                    now.getDate() + '日  ' +
+                    now.getHours() + ':' +
+                    now.getMinutes() + ':' +
+                    now.getSeconds();
+            }, 1000);
+
+            var oDiv04 = document.getElementById('div04');
+            // 实际开发中的未来时间(ms)
+            var msFuture = new Date(2021, 1, 9, 23, 59, 59);
+            var timer04 = setInterval(function () {
+                // 实际开发中的后台时间(ms)，通过ajax获取
+                var msNow = new Date();
+                var sleft = parseInt((msFuture-msNow)/1000);
+                oDiv04.innerText = '距离云服务器到期还有：' +
+                    parseInt(sleft/(3600*24)) + '天' +
+                    parseInt(sleft%(3600*24) / 3600) + '时' +
+                    parseInt(sleft%(3600*24)%3600 / 60) + '分' +
+                    parseInt(sleft%(3600*24)%3600%60) + '秒';
+            }, 1000);
+
+        }
+    </script>
+</head>
+<body>
+<!--往返运动-->
+    <div id="div01" class="div01"></div>
+<!--无缝滚动-->
+    <div id="div02" class="div02">
+        <span id="toleft">&lt;</span>
+        <div class="list01_wrap">
+            <ul id="ul01" class="list01">
+                <li style="background-color:#ff0;">我</li>
+                <li style="background-color:#f00;">爱</li>
+                <li style="background-color:#00f;">你</li>
+                <li style="background-color:#0f0;">！</li>
+            </ul>
+        </div>
+        <span id="toright">&gt;</span>
+    </div>
+<!--时钟-->
+    <div id="div03" class="div03"></div>
+<!--倒计时-->
+    <div id="div04" class="div04"></div>
+</body>
+</html>

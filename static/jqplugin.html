@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery插件</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<!--    鼠标滚轮插件-->
+    <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<!--    操作cookie插件-->
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+<!--    jquery-ui插件:拖拽功能-->
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <style type="text/css">
+        .clearfix:before,.clearfix:after{
+            content: '';
+            display: table;
+        }
+        .clearfix:after{
+            clear: both;
+        }
+        .clearfix{
+            zoom: 1;
+        }
+        .wrap08{
+            width: 600px;
+            height: 400px;
+            margin: 50px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .page_con{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+        .pages{
+            width: 600px;
+            height: 400px;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            transition: all 100ms ease 300ms;
+        }
+        .page1{
+            background-color: #f00;
+        }
+        .page2{
+            background-color: #0f0;
+        }
+        .page3{
+            background-color: #00f;
+        }
+        .page4{
+            background-color: #0ff;
+        }
+        .page5{
+            background-color: #f0f;
+        }
+        .wrap08 .moving{
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+        .points{
+            z-index: 2;
+            list-style: none;
+            position: absolute;
+            top: 130px;
+            right: 20px;
+            width: 20px;
+            height: 140px;
+            padding: 0;
+            margin: 0;
+        }
+        .points li{
+            margin-bottom: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            cursor: pointer;
+        }
+        .points .active{
+            background-color: yellow;
+        }
+
+        .wrap12{
+            margin: 50px auto 0;
+            width: 300px;
+            height: 80px;
+            text-align: center;
+            position: relative;
+            border: 1px solid black;
+        }
+        .pop02{
+            background-color: #ddd;
+            font: italic 15px/60px "Microsoft YaHei UI";
+            height: 60px;
+            display: none;
+        }
+        .pop02 a{
+            display: block;
+            margin: 0 auto;
+            font: normal 14px/20px "Microsoft YaHei UI";
+            text-align: center;
+            text-decoration: none;
+            color: blue;
+        }
+
+        .wrap13{
+            margin: 50px auto 0;
+            width: 574px;
+            height: 32px;
+        }
+        .slidebar{
+            width: 520px;
+            height: 30px;
+            border: 1px solid black;
+            float: left;
+            position: relative;
+        }
+        .process{
+            background-color: #ddd;
+            width: 0;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .dragbar{
+            width: 20px;
+            height: 30px;
+            background-color: gold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .wrap13 input{
+            width: 40px;
+            height: 30px;
+            float: left;
+            outline: none;
+            border: 1px solid #ddd;
+            padding: 0;
+            font-weight: bold;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        .wrap14{
+            width: 400px;
+            height: 500px;
+            border: 1px solid #ccc;
+            margin: 50px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .content{
+            width: 360px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 10px 20px;
+            font: normal 14px/32px "Microsoft YaHei UI";
+            text-indent: 2em;
+        }
+        .scrollbar{
+            width: 10px;
+            height: 490px;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+        .sdragbar{
+            width: 10px;
+            height: 200px;
+            background-color: #ccc;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        $ (function () {
+            // 鼠标滚动动画
+            {
+                var $wrap08 = $('.wrap08');
+                var $page_con = $('.page_con');
+                var $pages = $('.pages');
+                var $points = $('.points li');
+                var timer = null;
+                var h = $pages.outerHeight();
+                var now_page = 0, p_length = $pages.length;
+                $wrap08.mousewheel(function (event, dat) {
+                    // 函数节流
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        if (dat === -1) { // -1：向下滚动
+                            now_page++;
+                        } else { // 1：向上滚动
+                            now_page--;
+                        }
+                        if (now_page < 0) {
+                            now_page = 0;
+                        }
+                        if (now_page > p_length - 1) {
+                            now_page = p_length - 1;
+                        }
+                        $page_con.animate({'top': -h * now_page}, 300);
+                        $wrap08.css({'backgroundColor': $pages.eq(now_page).css('backgroundColor')});
+                        $pages.eq(now_page).addClass('moving').siblings().removeClass('moving');
+                        $points.eq(now_page).addClass('active').siblings().removeClass('active');
+                    }, 200);
+                    return false;
+                });
+                $points.click(function () {
+                    now_page = $(this).index();
+                    $page_con.animate({'top': -h * now_page}, 300);
+                    $wrap08.css({'backgroundColor': $pages.eq(now_page).css('backgroundColor')});
+                    $pages.eq(now_page).addClass('moving').siblings().removeClass('moving');
+                    $points.eq(now_page).addClass('active').siblings().removeClass('active');
+                });
+            }
+
+            // 只提示一次的弹窗
+            {
+                var isRead = $.cookie('isRead');
+                if (isRead === undefined) {
+                    $('.pop02').show();
+                }
+                $('.read').click(function () {
+                    $.cookie('isRead', true, {expires: 7, path: '/'});
+                    $('.pop02').hide();
+                });
+            }
+
+            // 数值滚动条
+            {
+                var $process = $('.process');
+                var $slide_count = $('#slide_count');
+                var $dragbar = $('.dragbar');
+                var full_width = $('.slidebar').width() - $dragbar.outerWidth();
+                $dragbar.draggable({
+                    axis: 'x',
+                    containment: 'parent',
+                    opacity: 0.6,
+                    drag: function (event, ui) {
+                        var curleft = ui.position.left;
+                        $process.css({'width': curleft});
+                        $slide_count.val(parseInt(curleft*100/full_width));
+                    }
+                });
+            }
+
+            // 自定义滚动条
+            var $sdragbar = $('.sdragbar');
+            var hide_height = $('.content').outerHeight() - $('.wrap12').outerHeight();
+            var scroll_height = $('.scrollbar').height() - $sdragbar.outerHeight();
+            $sdragbar.draggable({
+                axis: 'y',
+                containment: 'parent',
+                opacity: 0.6,
+                drag: function (ev, ui) {
+                    var curtop = ui.position.top;
+                    var show_height = curtop/scroll_height*hide_height;
+                    $('.content').css({'top': -show_height});
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<!--鼠标滚动动画-->
+    <div class="wrap08">
+        <div class="page_con">
+            <div class="pages page1 moving"></div>
+            <div class="pages page2"></div>
+            <div class="pages page3"></div>
+            <div class="pages page4"></div>
+            <div class="pages page5"></div>
+        </div>
+        <ul class="points">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+<!--只提示一次的弹窗-->
+    <div class="wrap12">
+        <div class="pop02">
+            提示内容：此弹框仅出现一次
+            <a href="javascript:" class="read">我知道了</a>
+        </div>
+    </div>
+<!--数值滑动条-->
+    <div class="wrap13">
+        <div class="slidebar">
+            <div class="process"></div>
+            <div class="dragbar"></div>
+        </div>
+        <label for="slide_count"></label><input type="text" id="slide_count">
+    </div>
+<!--自定义滚动条-->
+    <div class="wrap14">
+        <div class="content">
+            2005年以后，互联网进入Web2.0时代，各种类似桌面软件的Web应用大量涌现，网站的前端由此发生了翻天覆地的变化。网页不再只是承载单一的文字和图片，各种富媒体让网页的内容更加生动，网页上软件化的交互形式为用户提供了更好的使用体验，这些都是基于前端技术实现的。以前会Photoshop和Dreamweaver就可以制作网页，现在只掌握这些已经远远不够了。无论是开发难度上，还是开发方式上，现在的网页制作都更接近传统的网站后台开发，所以现在不再叫网页制作，而是叫Web前端开发。Web前端开发在产品开发环节中的作用变得越来越重要，而且需要专业的前端工程师才能做好，这方面的专业人才近几年来备受青睐。Web前端开发是一项很特殊的工作，涵盖的知识面非常广，既有具体的技术，又有抽象的理念。简单地说，它的主要职能就是把网站的界面更好地呈现给用户。
+			掌握HTML是网页的核心，是一种制作万维网页面的标准语言，是万维网浏览器使用的一种语言，它消除了不同计算机之间信息交流的障碍。因此，它是目前网络上应用最为广泛的语言，也是构成网页文档的主要语言，学好HTML是成为Web开发人员的基本条件。
+学好CSS是网页外观的重要一点，CSS可以帮助把网页外观做得更加美观。
+学习JavaScript的基本语法，以及如何使用JavaScript编程将会提高开发人员的个人技能。
+了解Unix和Linux的基本知识虽然这两点很基础，但是开发人员了解Unix和Linux的基本知识是有益无害的。
+了解Web服务器当你对Apache的基本配置，htaccess配置技巧有一些掌握的话，将来必定受益，而且这方面的知识学起来也相对容易。
+        </div>
+        <div class="scrollbar">
+            <div class="sdragbar"></div>
+        </div>
+    </div>
+</body>
+</html>

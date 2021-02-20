@@ -1,0 +1,37 @@
+/*消除标签固有样式，保留语义*/
+body,p,h1,h2,h3,h4,ul,form,input{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+em{
+    font-style: normal;
+}
+img{
+    border: 0;
+}
+
+/*解决margin-top塌陷，清除浮动*/
+.clearfix:before,.clearfix:after{
+    content: '';
+    display: table;
+}
+.clearfix:after{
+    clear: both;
+}
+.clearfix{
+    zoom: 1;
+}
+
+/*快捷样式*/
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}

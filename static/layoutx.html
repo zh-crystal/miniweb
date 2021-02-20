@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布局|流体 响应式 rem</title>
+    <style type="text/css">
+        body{
+            margin: 0;
+        }
+        .con1 a{
+            float: left;
+            display: block;
+            /*方法1：使用calc计算*/
+            width: calc(25% - 4px);
+            height: 100%;
+            font: 16px/100px "Microsoft YaHei UI";
+            text-decoration: none;
+            color: #333;
+            background-color: gold;
+            text-align: center;
+            border: 2px solid black;
+        }
+        .con2 a{
+            float: left;
+            display: block;
+            width: 25%;
+            height: 100%;
+            font: 16px/100px "Microsoft YaHei UI";
+            text-decoration: none;
+            color: #333;
+            background-color: gold;
+            text-align: center;
+            border: 2px solid black;
+            /*方法2：使用新属性box-sizing，盒子大小自动包括边框*/
+            box-sizing: border-box;
+        }
+        .con3 div{
+            width: 23%;
+            border: 2px solid black;
+            height: 200px;
+            margin: 1%;
+            float: left;
+            box-sizing: border-box;
+            background-color: pink;
+        }
+        /*when width<800px*/
+        @media (max-width: 800px) {
+            .con3 div{
+                width: 46%;
+                margin: 2%;
+            }
+        }
+        /*when width<400px*/
+        @media (max-width: 400px) {
+            .con3 div{
+                width: 94%;
+                margin: 3%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>流体布局</h2>
+    <div class="con1">
+        <a href="#">菜单文字</a>
+        <a href="#">菜单文字</a>
+        <a href="#">菜单文字</a>
+        <a href="#">菜单文字</a>
+    </div>
+    <hr />
+    <div class="con2">
+        <a href="#">菜单文字</a>
+        <a href="#">菜单文字</a>
+        <a href="#">菜单文字</a>
+        <a href="#">菜单文字</a>
+    </div>
+    <h2>响应式布局</h2>
+    <div class="con3">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>

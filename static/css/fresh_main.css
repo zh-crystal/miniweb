@@ -1,0 +1,342 @@
+/*顶部*/
+.header_con{
+    background-color: #f7f7f7;
+    height: 29px;
+    border-bottom: 1px solid #ddd;
+}
+.header{
+    width: 1200px;
+    height: 29px;
+    margin: 0 auto;
+}
+.welcome{
+    font: 12px/29px "Microsoft YaHei UI";
+    color: #666;
+}
+.user_info{
+    display: none;
+    font: 12px/29px "Microsoft YaHei UI";
+    color: #666;
+}
+.user_info em{
+    color: #f80;
+}
+.login_btns li, .user_btns li{
+    float: left;
+}
+.login_btns span, .user_btns span{
+    margin: 0 10px;
+    color: #cecece;
+}
+.login_btns a:hover, .user_btns a:hover{
+    color: #f80;
+}
+.login_btns a, .login_btns span, .user_btns a, .user_btns span{
+    display: block;
+    font: 12px/29px "Microsoft YaHei UI";
+    color: #666;
+}
+/*logo栏*/
+.logo_line_con{
+    width: 1200px;
+    height: 115px;
+    margin: 0 auto;
+}
+.logo{
+    margin: 29px 0 0 17px;
+}
+.search_con{
+    width: 616px;
+    height: 38px;
+    margin: 34px 0 0 124px;
+    border: 1px solid #37ab40;
+    background: url("../images/fresh_icons.png") 10px 10px no-repeat;
+}
+.search_key{
+    margin-left: 36px;
+    width: 480px;
+    height: 38px;
+    border: 0;
+    outline: none;
+}
+.search_btn{
+    width: 100px;
+    height: 38px;
+    background-color: #37ab40;
+    border: 0;
+    font-size: 14px;
+    font-family: "Microsoft YaHei UI", serif;
+    color: white;
+    cursor: pointer;
+}
+.chart_con{
+    width: 200px;
+    height: 40px;
+    margin-top: 34px;
+}
+.chart_link{
+    width: 158px;
+    height: 38px;
+    border: 1px solid #ddd;
+    background: url("../images/fresh_icons.png") 12px -42px no-repeat #f7f7f7;
+    text-indent: 56px;
+    font: 14px/38px "Microsoft YaHei UI";
+    color: #37ab40;
+}
+.chart_num{
+    width: 40px;
+    height: 40px;
+    background-color: #f80;
+    text-align: center;
+    font: bold 18px/40px "Microsoft YaHei UI";
+    color: white;
+}
+/*主菜单*/
+.main_menu_con{
+    height: 40px;
+    border-bottom: 2px solid #39a93e;
+}
+.main_menu{
+    width: 1200px;
+    height: 40px;
+    margin: 0 auto;
+}
+.main_menu h2{
+    float: left;
+    width: 200px;
+    height: 40px;
+    background-color: #39a93e;
+    text-align: center;
+    font: normal 14px/40px "Microsoft YaHei UI";
+    color: white;
+}
+.main_menu ul{
+    float: left;
+    overflow: hidden;
+}
+.main_menu li{
+    float: left;
+    height: 40px;
+}
+.main_menu a{
+    display: block;
+    height: 14px;
+    line-height: 14px;
+    padding: 0 20px;
+    margin-top: 13px;
+    margin-left: -1px;
+    border-left: 1px solid #666;
+    color: #666;
+}
+.main_menu a:hover{
+    color: #ff8800;
+}
+/*二级菜单*/
+.sub_menu_con{
+    width: 1200px;
+    height: 270px;
+    margin: 0 auto;
+}
+.sub_menu_list{
+    width: 200px;
+    height: 270px;
+}
+.sub_menu_list li{
+    width: 198px;
+    height: 44px;
+    border: 1px solid #eee;
+    border-top: 0;
+    background: url("../images/fresh_icons.png") 178px -384px no-repeat;
+}
+.sub_menu_list a{
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    text-indent: 71px;
+    color: #333;
+    background: url("../images/fresh_icons.png") 33px -90px no-repeat;
+}
+.sub_menu_list .icon02{
+    background-position: 33px -140px;
+}
+.sub_menu_list .icon03{
+    background-position: 33px -190px;
+}
+.sub_menu_list .icon04{
+    background-position: 33px -240px;
+}
+.sub_menu_list .icon05{
+    background-position: 33px -288px;
+}
+.sub_menu_list .icon06{
+    background-position: 33px -338px;
+}
+.sub_menu_list a:hover{
+    color: #ff8800;
+}
+.slide_con{
+    width: 760px;
+    height: 270px;
+    position: relative;
+    overflow: hidden;
+}
+.slide_list{
+    position: absolute;
+    width: 760px;
+    height: 270px;
+    left: 0;
+    top: 0;
+}
+.slide_list li{
+    width: 760px;
+    height: 270px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.slide_prev, .slide_next{
+    position: absolute;
+    width: 15px;
+    height: 24px;
+    background: url("../images/fresh_icons.png") no-repeat;
+    cursor: pointer;
+}
+.slide_prev{
+    background-position: left -450px;
+    left: 11px;
+    top: 122px;
+}
+.slide_next{
+    background-position: left -500px;
+    left: 732px;
+    top: 122px;
+}
+.slide_point{
+    position: absolute;
+    width: 100%;
+    height: 11px;
+    left: 0;
+    bottom: 9px;
+    font-size: 0;
+    text-align: center;
+}
+.slide_point li{
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    background-color: #9f9f9f;
+    margin: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.slide_point .active{
+    background-color: #cecece;
+}
+.advs{
+    width: 240px;
+    height: 270px;
+    background-color: lightgreen;
+}
+.advs img{
+    display: block;
+}
+/*分区商品*/
+.cate_con{
+    width: 1200px;
+    height: 337px;
+    margin: 20px auto 0;
+}
+.cate_title_con{
+    height: 35px;
+    border-bottom: 2px solid #42ad46;
+}
+.cate_title_con h3{
+    float: left;
+    font: bold 16px/35px "Microsoft YaHei UI";
+    color: #37ab40;
+}
+.cate_title_con ul{
+    float: left;
+    height: 12px;
+    border-left: 1px solid #666;
+    margin: 12px 0 0 20px;
+}
+.cate_title_con li{
+    float: left;
+    line-height: 12px;
+    margin-left: 15px;
+}
+.cate_title_con li a{
+    line-height: 12px;
+    font-size: 12px;
+    color: #666;
+}
+.cate_title_con li a:hover{
+    color: #ff8800;
+}
+.cate_title_con .more{
+    float: right;
+    font: normal 12px/35px "Microsoft YaHei UI";
+    color: #666;
+}
+.cate_title_con .more:hover{
+    color: #ff8800;
+}
+.goods_banner{
+    width: 200px;
+    height: 300px;
+}
+.goods_list{
+    width: 1000px;
+    height: 300px;
+}
+.goods_list li{
+    width: 249px;
+    height: 299px;
+    border-right: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+    float: left;
+}
+.goods_list li h4{
+    font: normal 14px/50px "Microsoft YaHei UI";
+    text-align: center;
+    color: #666;
+}
+.goods_list li a{
+    display: block;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+}
+.goods_list li .price{
+    font: bold 20px/50px "Microsoft YaHei UI";
+    color: #c40000;
+    text-align: center;
+    margin-top: 20px;
+}
+/*尾部*/
+.footer{
+    border-top: 2px solid #4ab14e;
+    margin: 30px 0 40px;
+}
+.footer_link{
+    text-align: center;
+    margin-top: 38px;
+}
+.footer_link a{
+    color: #4e4e4e;
+    font-size: 12px;
+}
+.footer_link a:hover{
+    color: #ff8800;
+}
+.footer_link span{
+    color: #4e4e4e;
+    font-size: 12px;
+    padding: 0 10px;
+}
+.footer p{
+    text-align: center;
+    margin-top: 14px;
+    font-size: 12px;
+}

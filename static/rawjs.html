@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>原生JS</title>
+    <style type="text/css">
+        div{
+            width: 980px;
+            margin: 50px auto 0;
+            text-align: center;
+            line-height: 50px;
+            background-color:#ddd;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var btn01 = document.getElementById('btn01');
+            var btn02 = document.getElementById('btn02');
+            var div_skin = document.getElementById('skin');
+            btn01.onclick = function (){
+                div_skin.style.backgroundColor = 'red';
+            }
+            btn02.onclick = function (){
+                div_skin.style.backgroundColor = 'green';
+            }
+
+            var btn03 = document.getElementById('btn03');
+            var div_toggle = document.getElementById('toggle');
+            btn03.onclick = function () {
+                if (div_toggle.style.display === 'none') { // 第一次读标签行间样式display属性值，没有写则为null
+                    div_toggle.style.display = 'block'
+                    btn03.value = '隐藏';
+                } else {
+                    div_toggle.style.display = 'none';
+                    btn03.value = '显示';
+                }
+            }
+
+            var iWeek = (new Date()).getDay();
+            var div_week = document.getElementById('week');
+            switch (iWeek) {
+                case 1:
+                    div_week.style.backgroundColor = 'red';
+                    div_week.innerText = '周一';
+                    break;
+                case 2:
+                    div_week.style.backgroundColor = 'yellow';
+                    div_week.innerText = '周二';
+                    break;
+                case 3:
+                    div_week.style.backgroundColor = 'orange';
+                    div_week.innerText = '周三';
+                    break;
+                case 4:
+                    div_week.style.backgroundColor = 'green';
+                    div_week.innerText = '周四';
+                    break;
+                case 5:
+                    div_week.style.backgroundColor = 'blue';
+                    div_week.innerText = '周五';
+                    break;
+                default:
+                    div_week.innerText = '周末';
+                    div_week.style.backgroundColor = 'pink';
+            }
+
+            var btn04 = document.getElementById('btn04');
+            var btn05 = document.getElementById('btn05');
+            var ul_insert = document.getElementById('insert');
+            var sTr = '';
+            btn04.onclick = function () {
+                for (var i=1; i <= 3; i++) {
+                    sTr += '<li style="height: 10px;padding: 0;margin: 10px;">'+i+'</li>';
+                }
+                ul_insert.innerHTML = sTr;
+            }
+            btn05.onclick = function () {
+                sTr = '';
+                ul_insert.innerHTML = sTr;
+            }
+
+            var btn06 = document.getElementById('btn06');
+            var input01 = document.getElementById('adder01');
+            var input02 = document.getElementById('adder02');
+            var span_res = document.getElementById('addres');
+            btn06.onclick = function () {
+                var sVal01 = input01.value;
+                var sVal02 = input02.value;
+                span_res.innerText = parseInt(sVal01) + parseInt(sVal02);
+            }
+
+            var btn07 = document.getElementById('btn07');
+            var sRefer = document.referrer;
+            btn07.onclick = function () {
+                window.location.href = 'https://www.baidu.com';
+            }
+
+            var oBody = document.getElementById('body');
+            var sUrl = window.location.search;
+            if (sUrl !== '' && sUrl.split('=')[0].endsWith('bgc')) {
+                var sn = sUrl.split('=')[1];
+                switch (sn) {
+                    case '1':
+                        oBody.style.backgroundColor = '#f00';
+                        break;
+                    case '2':
+                        oBody.style.backgroundColor = '#0f0';
+                        break;
+                    case '3':
+                        oBody.style.backgroundColor = '#00f';
+                        break;
+                    default:
+                        oBody.style.backgroundColor = '#fff';
+                }
+            }
+        }
+    </script>
+</head>
+<body id="body">
+<!--换肤-->
+    <div id="skin">
+        <input type="button" value="背景1" id="btn01" style="background-color:red;">
+        <input type="button" value="背景2" id="btn02" style="background-color:green;">
+    </div>
+<!--单击切换-->
+    <div style="height: 200px;">
+        <input type="button" value="隐藏" id="btn03">
+        <div id="toggle" style="width: 100px;height: 100px;background-color:gold;"></div>
+    </div>
+<!--随星期切换-->
+    <div id="week" style="width: 400px;height: 50px;"></div>
+<!--循环插入-->
+    <div style="height: 160px;">
+        <input type="button" id="btn04" value="插入">
+        <input type="button" id="btn05" value="移除">
+        <ul id="insert" style="width: 100px; height: 100px;list-style: none;margin: 0 auto"></ul>
+    </div>
+<!--简单加法器-->
+    <div>
+        <label for="adder01"></label><input type="text" id="adder01"> +
+        <label for="adder02"></label><input type="text" id="adder02">
+        <input type="button" id="btn06" value="相加"> =
+        <span id="addres"></span>
+    </div>
+<!--跳转-->
+    <div>
+        <input type="button" value="跳转到百度" id="btn07">
+    </div>
+<!--根据地址栏参数改变背景-->
+    <div>
+        <a href="#">顶部</a>
+        <a href="./rawjs.html?bgc=1">红色背景</a>
+        <a href="./rawjs.html?bgc=2">绿色背景</a>
+        <a href="./rawjs.html?bgc=3">蓝色背景</a>
+        <a href="./rawjs.html?bgc=4">白色背景</a>
+        <a href="./rawjs.html">重置URL</a>
+    </div>
+<!--产生10~20的随机数-->
+    <script type="text/javascript">
+        function fnGenRandom(start, stop) {
+            var arr = [];
+            for (var i=0; i<20; i++) {
+                arr.push(Math.floor((stop - start + 1) * Math.random()) + start);
+            }
+            console.log(arr);
+        }
+    </script>
+    <div>
+        <input type="button" value="console生成[10,20]随机数" onclick="fnGenRandom(10,20)">
+    </div>
+</body>
+</html>

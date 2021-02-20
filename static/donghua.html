@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 动画</title>
+    <style type="text/css">
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: gold;
+
+            transition: all 1s ease;
+        }
+        .box1:hover{
+            width: 600px;
+            height: 500px;
+            background-color: #f00;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+
+            transition: width 1s ease,
+                height 1s ease 1s,
+                background-color 1s ease 2s;
+        }
+        .box2:hover{
+            width: 600px;
+            height: 500px;
+            background-color: #f00;
+        }
+        .pic_con{
+            width: 200px;
+            height: 300px;
+            margin: 50px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .pic_info{
+            position: absolute;
+            top: 300px;
+            left: 0;
+            width: 180px;
+            height: 100px;
+            background-color: rgba(0,0,0,0.3);
+            color: #fff;
+            padding: 10px;
+
+            transition: top 500ms ease;
+        }
+        .pic_con:hover .pic_info{
+            top: 180px
+        }
+        .transform_box{
+            width: 200px;
+            height: 200px;
+            border: 3px solid #000;
+            margin: 50px auto 0;
+        }
+        .box3{
+            background-color: gold;
+            /*transform是静态属性，但比设置top/left值性能更优*/
+            transform: translate(0,0);
+            transition: transform 500ms ease;
+        }
+        .box3:hover{
+            transform: translate(30px,30px);
+        }
+        .box4{
+            background-color: green;
+            transform: scale(1,1);
+            transition: transform 500ms ease;
+        }
+        .box4:hover{
+            transform: scale(2,2);
+        }
+        .box5{
+            background-color: pink;
+            transform: rotate(0);
+            transition: transform 500ms ease;
+            /*旋转时加上下句，规范*/
+            transform-style: preserve-3d;
+        }
+        .box5:hover{
+            transform: rotate(45deg);
+        }
+        .box6{
+            background-color: pink;
+            transform: rotate(0);
+            transform-origin: left top;
+            transition: transform 500ms ease;
+        }
+        .box6:hover{
+            transform: rotate(45deg);
+        }
+        .box7{
+            background-color: pink;
+            /*作变形变化需要做初始值，否则容易出现跳变bug*/
+            transform: perspective(800px) rotateY(0);
+            transition: transform 500ms ease;
+        }
+        .box7:hover{
+            transform: perspective(800px) rotateY(45deg);
+        }
+        .box8{
+            background-color: cyan;
+            transform: skew(0,0);
+            transition: transform 500ms ease;
+        }
+        .box8:hover{
+            transform: skew(45deg,0);
+        }
+        .page_con{
+            width: 300px;
+            height: 272px;
+            border: 3px solid #000;
+            margin: 50px auto 0;
+            position: relative;
+        }
+        .page_con img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transform: perspective(800px) rotateY(0);
+            transition: transform 500ms ease;
+        }
+        .page_con:hover img{
+            transform: perspective(800px) rotateY(180deg);
+        }
+        .page_con .back_info{
+            width: 300px;
+            height: 272px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background-color: pink;
+            font-size: 20px;
+            text-align: center;
+            line-height: 272px;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transform: perspective(800px) rotateY(-180deg);
+            transition: transform 500ms ease;
+        }
+        .page_con:hover .back_info{
+            transform: perspective(800px) rotateY(0);
+        }
+        /*定义animation动画*/
+        @keyframes moving {
+            from{
+                width: 100px;
+            }
+            to{
+                width: 500px;
+            }
+        }
+        .box9{
+            width: 100px;
+            height: 100px;
+            background-color: gold;
+
+            animation: moving 500ms ease 0s 5;
+        }
+        .box10{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+
+            animation: moving 500ms ease infinite alternate;
+            animation-play-state: paused;
+        }
+        .box10:hover{
+            animation-play-state: running;
+        }
+        @keyframes rotating {
+            from{
+                transform: rotate(0);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        .windmill{
+            display: block;
+            width: 400px;
+            height: 400px;
+            margin: 50px auto 0;
+            animation: rotating 1s linear infinite;
+        }
+        .load_con{
+            width: 300px;
+            height: 158px;
+            border: 1px solid #000;
+            margin: 150px auto 0;
+        }
+        @keyframes loading {
+            from{
+                transform: scale(1,1);
+            }
+            to{
+                transform: scale(1,0.5);
+            }
+        }
+        .load_con div{
+            width: 30px;
+            height: 100px;
+            float: left;
+            margin: 15px;
+            border-radius: 15px;
+            animation: loading 500ms ease infinite alternate;
+        }
+        .load_con div:nth-child(1){
+            background-color: red;
+        }
+        .load_con div:nth-child(2){
+            background-color: green;
+            animation-delay: 100ms;
+        }
+        .load_con div:nth-child(3){
+            background-color: pink;
+            animation-delay: 200ms;
+        }
+        .load_con div:nth-child(4){
+            background-color: lightgreen;
+            animation-delay: 300ms;
+        }
+        .load_con div:nth-child(5){
+            background-color: lightblue;
+            animation-delay: 400ms;
+        }
+        .load_con p{
+            text-align: center;
+        }
+        .walking_con{
+            width: 120px;
+            height: 180px;
+            border: 1px solid #ddd;
+            margin: 50px auto 0;
+            overflow: hidden;
+            position: relative;
+        }
+        @keyframes walking {
+            from{
+                left: 0;
+            }
+            to{
+                left: -960px;
+            }
+        }
+        .walking_con img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: walking 1s steps(8) infinite;
+        }
+    </style>
+</head>
+<body>
+    <h2>transition</h2>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <h3>图片说明滑入效果[transition]</h3>
+    <div class="pic_con">
+        <img src="images/banner01.jpg" alt="banner">
+        <div class="pic_info">
+            <h4>标题</h4>
+            <p>文字说明文字说明文字说明文字说明文字说明</p>
+        </div>
+    </div>
+    <hr />
+    <h2>transform</h2>
+    <div class="transform_box box3"></div>
+    <div class="transform_box box4"></div>
+    <div class="transform_box box5"></div>
+    <div class="transform_box box6"></div>
+    <div class="transform_box box7"></div>
+    <div class="transform_box box8"></div>
+    <h3>图片翻转动画效果[transition transform]</h3>
+    <div class="page_con">
+        <img src="images/location_bg.jpg" alt="背景图">
+        <div class="back_info">
+            图片的文字说明
+        </div>
+    </div>
+    <hr />
+    <h2>animation</h2>
+    <div class="box9"></div>
+    <div class="box10"></div>
+    <h3>风车旋转动画[animation]</h3>
+    <img src="images/fengche.png" alt="风车图片" class="windmill">
+    <h3>loading动画[animation]</h3>
+    <div class="load_con">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <p>loading...</p>
+    </div>
+    <h3>走路动画[animation]</h3>
+    <div class="walking_con">
+        <img src="images/walking.png" alt="走路图片">
+    </div>
+</body>
+</html>

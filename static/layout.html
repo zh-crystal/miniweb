@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>特征布局练习</title>
+    <style type="text/css">
+        /*翻页*/
+        .pagenation {
+            list-style: none;
+            margin: 50px auto 0;
+            padding: 0;
+            width: 600px;
+            height: 40px;
+            border: 1px solid #666;
+            font-size: 0;
+            text-align: center;
+        }
+        .pagenation li{
+            display: inline-block;
+            height: 26px;
+            font-size: 12px;
+            margin: 7px 5px 0;
+        }
+        .pagenation li a{
+            display: block;
+            height: 26px;
+            text-decoration: none;
+            padding: 0 10px;
+            font: normal 12px/26px 'Microsoft YaHei';
+            color: #000;
+            background-color: gold;
+        }
+        .pagenation li a:hover{
+            background-color: red;
+            color: #fff;
+        }
+        /*导航条01*/
+        .menu{
+            list-style: none;
+            margin: 50px auto 0;
+            padding: 0;
+            width: 958px;
+            height: 40px;
+            border: 1px solid #666;
+            font-size: 0;
+            text-align: center;
+        }
+        .menu li{
+            display: inline-block;
+            height: 40px;
+            font-size: 14px;
+        }
+        .menu li a{
+            display: block;
+            height: 40px;
+            text-decoration: none;
+            font: normal 14px/40px 'Microsoft YaHei';
+            color: #000;
+        }
+        .menu li span{
+            display: block;
+            height: 40px;
+            margin: 0 20px;
+            font: normal 14px/40px 'Microsoft YaHei';
+        }
+        .menu li a:hover{
+            color: #ff8800;
+        }
+        /*导航条02*/
+        .menu02{
+            list-style: none;
+            margin: 50px auto 0;
+            padding: 0;
+            width: 960px;
+            height: 40px;
+            background-color: #55a8ea;
+            position: relative;
+        }
+        .menu02 li{
+            width: 100px;
+            height: 40px;
+            float: left;
+        }
+        .menu02 li a{
+            display: block;
+            width: 100px;
+            height: 40px;
+            text-decoration: none;
+            text-align: center;
+            font: normal 14px/40px 'Microsoft YaHei';
+            color: #fff;
+        }
+        .menu02 li a:hover{
+            background-color: #00619f;
+        }
+        .menu02 .new{
+            width: 33px;
+            height: 20px;
+            background: url("images/new.png");
+            position: absolute;
+            left: 432px;
+            top: -10px;
+        }
+        /*图片展示*/
+        .pic_list_con{
+            width: 958px;
+            border: 1px solid #666;
+            margin: 50px auto 0;
+        }
+        .pic_list_title{
+            width: 918px;
+            height: 50px;
+            border-bottom: 1px solid #666;
+            margin: 0 auto;
+        }
+        .pic_list_title h3{
+            float: left;
+            font: normal 18px/50px 'Microsoft YaHei';
+            margin: 0;
+            padding: 0 10px;
+            border-bottom: 2px solid red;
+        }
+        .pic_list_wrap{
+            width: 918px;
+            list-style: none;
+            margin: 20px auto 13px;
+            overflow: hidden;
+        }
+        .pic_list{
+            list-style: none;
+            padding: 0;
+            width: 950px;
+            margin: 0;
+            overflow: hidden;
+        }
+        .pic_list li{
+            width: 160px;
+            height: 68px;
+            float: left;
+            margin: 0 29px 25px 0;
+        }
+    </style>
+</head>
+<body>
+<!--翻页-->
+    <ul class="pagenation">
+        <li><a href="#">上一页</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><span>...</span></li>
+        <li><a href="#">17</a></li>
+        <li><a href="#">18</a></li>
+        <li><a href="#">19</a></li>
+        <li><a href="#">20</a></li>
+        <li><a href="#">下一页</a></li>
+    </ul>
+<!--导航条01-->
+    <ul class="menu">
+        <li><a href="#">首页</a></li>
+        <li><span>|</span></li>
+        <li><a href="#">网站建设</a></li>
+        <li><span>|</span></li>
+        <li><a href="#">程序开发</a></li>
+        <li><span>|</span></li>
+        <li><a href="#">网络营销</a></li>
+        <li><span>|</span></li>
+        <li><a href="#">企业VI</a></li>
+        <li><span>|</span></li>
+        <li><a href="#">案例展示</a></li>
+        <li><span>|</span></li>
+        <li><a href="#">联系我们</a></li>
+    </ul>
+<!--导航条02-->
+    <ul class="menu02">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">网站建设</a></li>
+        <li><a href="#">程序开发</a></li>
+        <li><a href="#">网络营销</a></li>
+        <li><a href="#">企业VI</a></li>
+        <li><a href="#">案例展示</a></li>
+        <li><a href="#">联系我们</a></li>
+        <li class="new"></li>
+    </ul>
+<!--图片展示-->
+    <div class="pic_list_con">
+        <div class="pic_list_title">
+            <h3>图片展示</h3>
+        </div>
+        <div class="pic_list_wrap">
+            <ul class="pic_list">
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+                <li><a href="#"><img src="images/layout_goods.jpg" alt="商品图片"></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
